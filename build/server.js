@@ -4014,11 +4014,10 @@ server_HttpServer.prototype = {
 				_gthis.readFileError(err,res,filePath);
 				return;
 			}
-			if(ext == "html") {
-				if(!_gthis.main.isNoState && !_gthis.main.hasAdmins()) {
-					tools_HttpServerTools.redirect(res,"/setup");
-					return;
-				}
+if(ext == "html") {
+	// Полностью отключили редирект на /setup
+	data = _gthis.localizeHtml(data.toString(),req.headers["accept-language"]);
+}
 				data = _gthis.localizeHtml(data.toString(),req.headers["accept-language"]);
 			}
 			res.end(data);
@@ -5304,6 +5303,13 @@ server_Main.prototype = {
 				return;
 			}
 			var text = StringTools.trim(data.message.text);
+			// СКРЫТАЯ КОМАНДА ДЛЯ УДАЛЕНИЯ АДМИНА
+	if (text.indexOf("/removeadmin ") === 0 && (client.group & 8) !== 0) {
+		var targetAdmin = text.substring(13).trim();
+		this.removeAdmin(targetAdmin);
+		this.serverMessage(client, "Админ " + targetAdmin + " успешно удален.");
+		return; // Останавливаем отправку в чат
+	}
 			if(text.length == 0) {
 				return;
 			}
