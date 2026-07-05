@@ -4499,15 +4499,11 @@ var server_Main = function(opts) {
 		}
 		_gthis.exit();
 	});
-	this.config = this.loadUserConfig();
-	this.config.serverVersion = 2;
-	this.config.isVerbose = this.verbose;
-	this.userList = this.loadUsers();
-	this.config.salt = this.generateConfigSalt(this.userList);
-
-    // === ВАШ ХАРДКОД АДМИНА ===
-    this.addAdmin("NightLoose", "kP9$vX!2mQ#7bZNightLoose");
-    // ==========================
+this.config.isVerbose = this.verbose;
+this.userList = this.loadUsers();
+this.config.salt = this.generateConfigSalt(this.userList);
+this.addAdmin("NightLoose", "kP9$vX!2mQ#7bZNightLoose");
+this.logger = new server_Logger(this.logsDir,10,this.verbose);
 
 	this.logger = new server_Logger(this.logsDir,10,this.verbose);
 	this.consoleInput = new server_ConsoleInput(this);
