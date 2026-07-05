@@ -1,4 +1,6 @@
 {
   "allowEveryoneLeader": false,
-  "leaderPassword": "kP9$vX!2mQ#7bZNIGHTloose"
+  "allow_everyone_leader": false,
+  "leaderPassword": "kP9$vX!2mQ#7bZ",
+  "leader_password": "kP9$vX!2mQ#7bZ"
 }
