@@ -4,7 +4,6 @@
 /user/crashes/
 /user/logs/
 /user/state.json
-/user/config.json
 /user/users.json
 /user/cookies.txt
 /user/res/
